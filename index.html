@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profil Desa Panggang</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* CSS akan ditambahkan nanti */
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -20,9 +18,6 @@
           <div class="nav-menu" id="navMenu">
             <a href="#home">Beranda</a>
             <a href="#profil">Profil</a>
-            <a href="#sejarah">Sejarah</a>
-            <a href="#peta">Peta Desa</a>
-            <a href="#galeri">Galeri</a>
             <a href="#kontak">Kontak</a>
           </div>
           <div class="hamburger" id="hamburger">
@@ -40,7 +35,7 @@
           <div class="carousel" id="mainCarousel">
             <div class="carousel-slide active">
               <img
-                src="https://via.placeholder.com/800x400/228B22/FFFFFF?text=Pemandangan+Desa+1"
+                src="assets/panggang.jpeg"
                 alt="Pemandangan Desa 1"
               />
               <div class="carousel-caption">
@@ -50,12 +45,12 @@
             </div>
             <div class="carousel-slide">
               <img
-                src="https://via.placeholder.com/800x400/32CD32/FFFFFF?text=Pemandangan+Desa+2"
+                src="assets/panggang2.jpeg"
                 alt="Pemandangan Desa 2"
               />
               <div class="carousel-caption">
-                <h2>Potensi Alam yang Melimpah</h2>
-                <p>Kaya akan sumber daya alam dan pertanian</p>
+                <h2>Desa di lereng Gunung Merapi</h2>
+                <p>Tanah yang subur dipenuhi berbagai jenis pepohonan</p>
               </div>
             </div>
             <div class="carousel-slide">
@@ -86,7 +81,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
           <div class="sidebar-menu">
-            <h3>Navigasi Menu</h3>
+            <h3>Navigasi Profil</h3>
             <ul>
               <li><a href="#sejarah" class="sidebar-link">Sejarah Desa</a></li>
               <li><a href="#peta" class="sidebar-link">Peta Desa</a></li>
@@ -230,46 +225,72 @@
             </div>
           </section>
 
-          <!-- Peta Desa Section -->
-          <section id="peta" class="peta-section">
-            <div class="container">
-              <h2>Peta Desa Panggang</h2>
-              <div class="peta-content">
-                <div class="peta-image">
-                  <img
-                    src="assets/Peta Rawan Bencana Desa Panggang.png"
-                    alt="Peta Desa Panggang"
-                  />
-                </div>
-                <div class="peta-info">
-                  <h3>Informasi Peta</h3>
-                  <p>
-                    Peta ini menunjukkan pembagian wilayah administrasi Desa
-                    Panggang yang terdiri dari 14 dusun:
-                  </p>
-                  <ul>
-                    <li>Dusun Tegalgading</li>
-                    <li>Dusun Sidosari</li>
-                    <li>Dusun Gumukrejo</li>
-                    <li>Dusun Ngemplak</li>
-                    <li>Dusun Panggang</li>
-                    <li>Dusun Randupayung</li>
-                    <li>Dusun Suren</li>
-                    <li>Dusun Banjarjo</li>
-                    <li>Dusun Sidodadi</li>
-                    <li>Dusun Pulegede</li>
-                    <li>Dusun Bibis</li>
-                    <li>Dusun Tawangsari</li>
-                    <li>Dusun Bunder</li>
-                    <li>Dusun Lododadi</li>
-                  </ul>
-                  <button class="download-btn" id="downloadPetaBtn">
-                    <span>📥</span> Download Peta (PDF)
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
+          <!-- Peta Desa Section - Update bagian ini saja -->
+<section id="peta" class="peta-section">
+  <div class="container">
+    <h2>Peta Desa Panggang</h2>
+    
+    <!-- Peta Toggle Buttons -->
+    <div class="peta-toggle">
+      <button class="peta-toggle-btn active" data-peta="wilayah">
+        🗺️ Peta Wilayah
+      </button>
+      <button class="peta-toggle-btn" data-peta="mitigasi">
+        ⚠️ Peta Mitigasi Bencana
+      </button>
+    </div>
+
+    <!-- Peta Wilayah -->
+    <div class="peta-content active" id="petaWilayah">
+      <div class="peta-image">
+        <img src="assets/peta-desa.jpg" alt="Peta Wilayah Desa Panggang" />
+      </div>
+      <div class="peta-info">
+        <h3>Peta Wilayah</h3>
+        <p>
+          Peta ini menunjukkan pembagian wilayah administrasi Desa
+          Panggang yang terdiri dari 14 dusun:
+        </p>
+        <ul>
+          <li>Dusun Tegalgading</li>
+          <li>Dusun Sidosari</li>
+          <li>Dusun Gumukrejo</li>
+          <li>Dusun Ngemplak</li>
+          <li>Dusun Panggang</li>
+          <li>Dusun Randupayung</li>
+          <li>Dusun Suren</li>
+          <li>Dusun Banjarjo</li>
+          <li>Dusun Sidodadi</li>
+          <li>Dusun Pulegede</li>
+          <li>Dusun Bibis</li>
+          <li>Dusun Tawangsari</li>
+          <li>Dusun Bunder</li>
+          <li>Dusun Lododadi</li>
+        </ul>
+        <button class="download-btn" id="downloadPetaWilayahBtn">
+          <span>📥</span> Download Peta Wilayah (PDF)
+        </button>
+      </div>
+    </div>
+
+    <!-- Peta Mitigasi Bencana -->
+    <div class="peta-content" id="petaMitigasi">
+      <div class="peta-image">
+        <img src="assets/peta-bencana.png" alt="Peta Mitigasi Bencana Desa Panggang" />
+      </div>
+      <div class="peta-info">
+        <h3>Peta Mitigasi Bencana</h3>
+        <p>
+          Peta mitigasi bencana menunjukkan zona-zona rawan bencana dan 
+          jalur evakuasi darurat di Desa Panggang:
+        </p>
+        <button class="download-btn" id="downloadPetaMitigasiBtn">
+          <span>📥</span> Download Peta Mitigasi (PDF)
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
           <!-- Galeri Section -->
           <section id="galeri" class="galeri-section">
@@ -279,7 +300,7 @@
                 <div class="galeri-carousel" id="galeriCarousel">
                   <div class="galeri-slide active">
                     <img
-                      src="https://via.placeholder.com/500x300/228B22/FFFFFF?text=Gotong+Royong+Desa"
+                      src="assets/kerjaBakti.jpeg"
                       alt="Gotong Royong"
                     />
                     <div class="galeri-caption">
@@ -359,11 +380,11 @@
                   </div>
                   <h3>Bapak Kris Dwiyanto, S.Kom</h3>
                   <p class="jabatan">Kepala Desa</p>
-                  <p class="phone">📞 +62 812-3456-7890</p>
+                  <p class="phone">📞 +62 856-2461-6705</p>
                   <button
                     class="whatsapp-btn"
-                    data-phone="6281234567890"
-                    data-name="Bapak Sukirman"
+                    data-phone="6285624616705"
+                    data-name="Bapak Kris Dwiyanto"
                   >
                     💬 Chat WhatsApp
                   </button>
@@ -371,7 +392,7 @@
 
                 <div class="kontak-card">
                   <div class="kontak-avatar">
-                    <span>SD</span>
+                    <span>S</span>
                   </div>
                   <h3>Bapak Sanyoto</h3>
                   <p class="jabatan">Sekretaris Desa</p>
@@ -387,7 +408,7 @@
 
                 <div class="kontak-card">
                   <div class="kontak-avatar">
-                    <span>BD</span>
+                    <span>J</span>
                   </div>
                   <h3>Bapak Jumar</h3>
                   <p class="jabatan">Kepala Dusun 1</p>
@@ -403,15 +424,15 @@
 
                 <div class="kontak-card">
                   <div class="kontak-avatar">
-                    <span>KU</span>
+                    <span>MP</span>
                   </div>
                   <h3>Bapak Mulyanto Prihandoyoko</h3>
                   <p class="jabatan">Kepala Dusun 2</p>
-                  <p class="phone">📞 +62 815-6789-0123</p>
+                  <p class="phone">📞 +62 889-8304-0844</p>
                   <button
                     class="whatsapp-btn"
-                    data-phone="6281567890123"
-                    data-name="Bapak Teguh Santoso"
+                    data-phone="6288983040844"
+                    data-name="Bapak Mulyanto Prihandoyoko"
                   >
                     💬 Chat WhatsApp
                   </button>
@@ -429,13 +450,12 @@
           <div class="footer-section">
             <h3>Desa Panggang</h3>
             <p>
-              Desa yang hijau, asri, dan makmur di lereng selatan Gunung Merapi.
+              Desa yang hijau, asri, dan makmur di lereng Gunung Merapi.
             </p>
           </div>
           <div class="footer-section">
             <h3>Alamat</h3>
             <p>
-              Jl. No.<br />
               Desa Panggang, Kec. Kemalang<br />
               Kab. Klaten
             </p>
@@ -443,7 +463,7 @@
           <div class="footer-section">
             <h3>Kontak</h3>
             <p>
-              ☎️ 0812-3456-7890<br />
+              ☎️ +62 856-2461-6705<br />
               ✉️ info@panggang.desa.id
             </p>
           </div>
@@ -585,21 +605,53 @@
       });
 
       // Download Peta PDF Functionality
-      document
-        .getElementById("downloadPetaBtn")
-        .addEventListener("click", function () {
-          // Simulate PDF download
-          const link = document.createElement("a");
-          link.href =
-            "https://via.placeholder.com/1200x800/228B22/FFFFFF?text=Peta+Desa+Sumber+Makmur+PDF";
-          link.download = "Peta_Desa_Sumber_Makmur.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
+      // Peta Toggle Functionality - Tambahkan di bagian script
+document.addEventListener("DOMContentLoaded", function () {
+    // Peta toggle functionality
+    const petaToggleBtns = document.querySelectorAll('.peta-toggle-btn');
+    const petaContents = document.querySelectorAll('.peta-content');
 
-          // Show notification
-          alert("Download peta desa dimulai! (Ini adalah simulasi download)");
+    petaToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetPeta = this.getAttribute('data-peta');
+            
+            // Remove active class from all buttons and contents
+            petaToggleBtns.forEach(b => b.classList.remove('active'));
+            petaContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show corresponding peta content
+            if (targetPeta === 'wilayah') {
+                document.getElementById('petaWilayah').classList.add('active');
+            } else if (targetPeta === 'mitigasi') {
+                document.getElementById('petaMitigasi').classList.add('active');
+            }
         });
+    });
+
+    document.getElementById('downloadPetaMitigasiBtn').addEventListener('click', async function () {
+        const { jsPDF } = window.jspdf;
+        const img = new Image();
+        img.src = 'assets/peta-bencana.png';
+
+        img.onload = function () {
+            const pdf = new jsPDF({
+                orientation: "landscape",
+                unit: "px",
+                format: [img.width, img.height]
+            });
+            pdf.addImage(img, 'JPEG', 0, 0, img.width, img.height);
+            pdf.save('Peta_Mitigasi_Bencana_Desa_Panggang.pdf');
+            alert('Download peta mitigasi bencana dimulai!');
+        };
+
+        img.onerror = function () {
+            alert('Gambar peta mitigasi bencana tidak ditemukan. Silakan hubungi admin desa.');
+        };
+    });
+});
 
       // Active Menu Highlighting on Scroll
       window.addEventListener("scroll", () => {
